@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tang.R;
 import com.tang.blog.entity.Article;
 import com.tang.blog.entity.SysUser;
+import com.tang.blog.entity.dos.Archives;
 import com.tang.blog.entity.vo.ArticleVo;
 import com.tang.blog.entity.vo.TagVo;
 import com.tang.blog.mapper.ArticleMapper;
@@ -70,5 +71,35 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             articleVoList.add(articleVo);
         }
         return R.ok().data("data",articleVoList);
+    }
+
+    //首页最热文章
+    @Override
+    public List<Article> hotArticle() {
+        QueryWrapper<Article> wrapper=new QueryWrapper<>();
+        wrapper.orderByDesc("view_counts");
+        wrapper.select("id","title");
+        //last方法，拼接sql语句
+        wrapper.last("limit 5");
+        List<Article> list = this.list(wrapper);
+        return list;
+    }
+
+    @Override
+    public List<Article> newArticle() {
+        QueryWrapper<Article> wrapper=new QueryWrapper<>();
+        wrapper.orderByDesc("create_date");
+        wrapper.select("id","title");
+        //last方法，拼接sql语句
+        wrapper.last("limit 5");
+        List<Article> list = this.list(wrapper);
+        return list;
+    }
+
+    //文章归档
+    @Override
+    public List<Archives> listArchives() {
+        List<Archives> list=baseMapper.listArchives();
+        return list;
     }
 }

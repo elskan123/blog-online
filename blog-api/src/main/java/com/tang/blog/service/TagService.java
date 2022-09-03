@@ -17,4 +17,6 @@ import java.util.List;
 public interface TagService extends IService<Tag> {
     List<TagVo> findTagsByArticleId(Long articleId);
 
+    //查询热门的六个标签
+    List<Tag> hot();
 }

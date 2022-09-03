@@ -4,6 +4,7 @@ package com.tang.blog.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tang.R;
 import com.tang.blog.entity.Article;
+import com.tang.blog.entity.dos.Archives;
 import com.tang.blog.entity.vo.params.PageParams;
 import com.tang.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,34 @@ public class ArticleController {
         return r;
     }
 
+    /**
+     * 首页最热文章
+     * @return
+     */
+    @PostMapping("hot")
+    public R hotArticle(){
+        List<Article> list=articleService.hotArticle();
+        return R.ok().data("list",list);
+    }
+
+    /**
+     * 首页最新文章
+     * @return
+     */
+    @PostMapping("new")
+    public R newArticle(){
+        List<Article> list=articleService.newArticle();
+        return R.ok().data("list",list);
+    }
+
+    /**
+     * 文章归档
+     * @return
+     */
+    @PostMapping("listArchives")
+    public R listArchives(){
+        List<Archives> list=articleService.listArchives();
+        return R.ok().data("list",list);
+    }
 }
 

@@ -27,14 +27,14 @@ public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+//    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "账号")
     private String account;
 
     @ApiModelProperty(value = "是否管理员")
-    private Boolean admin;
+    private Integer admin;
 
     @ApiModelProperty(value = "头像")
     private String avatar;
@@ -43,7 +43,7 @@ public class SysUser implements Serializable {
     private Long createDate;
 
     @ApiModelProperty(value = "是否删除")
-    private Boolean deleted;
+    private Integer deleted;
 
     @ApiModelProperty(value = "邮箱")
     private String email;

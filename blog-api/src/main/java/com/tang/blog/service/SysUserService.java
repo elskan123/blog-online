@@ -1,5 +1,6 @@
 package com.tang.blog.service;
 
+import com.tang.R;
 import com.tang.blog.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    SysUser findUser(String accout, String password);
+
+    //根据账户查找用户
+    SysUser findUserByAccount(String account);
+
+    //根据token查询用户信息
+    R findUserByToken(String token);
 }

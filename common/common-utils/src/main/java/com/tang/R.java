@@ -14,7 +14,7 @@ public class R {
     @ApiModelProperty(value = "返回码")
     private Integer code;
     @ApiModelProperty(value = "返回消息")
-    private String message;
+    private String msg;
     @ApiModelProperty(value = "返回数据")
     private Map<String, Object> data = new HashMap<String, Object>();
 
@@ -26,7 +26,7 @@ public class R {
         R r = new R();
         r.setSuccess(true);
         r.setCode(ResultCode.SUCCESS);
-        r.setMessage("成功");
+        r.setMsg("成功");
         return r;
     }
 
@@ -35,7 +35,7 @@ public class R {
         R r = new R();
         r.setSuccess(false);
         r.setCode(ResultCode.ERROR);
-        r.setMessage("失败");
+        r.setMsg("失败");
         return r;
     }
 
@@ -45,7 +45,7 @@ public class R {
     }
 
     public R message(String message){
-        this.setMessage(message);
+        this.setMsg(message);
         return this;
     }
 
